@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<!-- display the board in a Jinja template -->
+<!-- You will be generating a board on the backend using a function from the boggle.py file and sending that to your Jinja template -->
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <p class="lead">Instructions:</p>
+            <p class="lead">The goal of the game is to get the highest point total. To gain points, create words from a random assortment of letters in the grid.</p>
+            <p class="lead">Words can be created from adjacent letters as well as diagonals. The letters must connect to each other in the proper sequence to spell the word correctly (excluding any letters previously used to construct the word).</p>
+        </div>
+    </div>
+    
+    
+    <form action="/board" method="GET">
+        <button type="submit" class="btn btn-primary">Play!</button>
+    </form>
+</div>
+
+{% endblock %}

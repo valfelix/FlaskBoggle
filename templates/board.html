@@ -4,8 +4,55 @@
 <!-- You will be generating a board on the backend using a function from the boggle.py file and sending that to your Jinja template -->
 {% block content %}
 
-<p> Board should appear here </p>
+<div class="container">
+    <div class="container">
+        <table class="grid-container">
+            <!-- use range of 5 for a 5x5 matrix -->
+            {%for i in range(5)%}
+            <tr class="">
+                {% for j in range(5) %}
+                <td><div class="grid-item">{{board[i][j]}}</div></td>
+                {% endfor%}
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>Current Score:</p> <p id="total">0</p>
+            </div>
+            <div class="col">
+                <p>Highest Score:</p> <p id="highest">{{highest}}</p>
+            </div>
+            <div class="col">
+                <p>Number of Games:</p> <p id="totalgames">{{totalgames}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="" id="messages">
+        <p>Good luck!</p>
+    </div>
 
-
+    <form method="POST" id="word-submit-form" class="form-inline">
+        <div class="form-group mb-2">
+          <input type="input" class="" id="word" placeholder="Enter Your Guess Here" name="word" required>
+        </div>
+        <button type="submit" id="word-button" class="btn btn-primary mb-2">Submit My Guess</button>
+    </form>
+    
+    <!-- <form action="" method="POST" class="" id="word-submit-form">
+        <input type="input" class="" id="word" placeholder="Enter Your Guess Here" name="word" required>
+    </form> -->
+    
+    <span id="countdown">60</span><span> seconds remaining</span>
+    
+    <ul class="words list-group">
+        <!-- our JS will add words here as they score -->   
+    </ul>
+</div>
 
 {% endblock %}
+
